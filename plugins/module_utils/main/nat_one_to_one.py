@@ -12,8 +12,9 @@ class OneToOne(BaseModule):
     CMDS = {
         'add': 'add_rule',
         'del': 'del_rule',
+        'detail': 'get_rule',
         'set': 'set_rule',
-        'search': 'get',
+        'search': 'search_rule',
         'toggle': 'toggle_rule',
     }
     API_KEY_PATH = 'filter.onetoone.rule'
