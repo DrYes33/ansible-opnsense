@@ -109,6 +109,7 @@ action_groups:
   nat:
     - oxlorg.opnsense.nat_source
     - oxlorg.opnsense.nat_one_to_one
+    - oxlorg.opnsense.nat_destination
   system:
     - oxlorg.opnsense.list
     - oxlorg.opnsense.reload
