@@ -20,7 +20,7 @@ class DnsBL(BaseModule):
     API_CONT_REL = 'service'
     API_CMD_REL = 'dnsbl'
     FIELDS_CHANGE = [
-        'enabled', 'providers', 'download_urls', 'domains_allow', 'domains_block', 'wildcard_domains_block',
+        'enabled', 'providers', 'sources', 'download_urls', 'domains_allow', 'domains_block', 'wildcard_domains_block',
         'source_networks', 'cache_ttl', 'nxdomain_address', 'nxdomain',
     ]
     FIELDS_ALL = [FIELD_ID]
@@ -28,6 +28,7 @@ class DnsBL(BaseModule):
     FIELDS_TRANSLATE = {
         'name': 'description',
         'providers': 'type',
+        'sources': 'sources',
         'download_urls': 'lists',
         'nxdomain_address': 'address',
         'domains_allow': 'allowlists',
@@ -39,7 +40,7 @@ class DnsBL(BaseModule):
         'bool': ['enabled', 'nxdomain'],
         'int': ['cache_ttl'],
         'list': [
-            'providers', 'download_urls', 'domains_allow', 'domains_block',
+            'providers', 'sources', 'download_urls', 'domains_allow', 'domains_block',
             'wildcard_domains_block', 'source_networks',
         ],
     }

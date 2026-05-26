@@ -36,6 +36,11 @@ def run_module():
             aliases=['type', 'dnsbl', 'bl'],
             description='Select which kind of DNSBL you want to use.'
         ),
+        sources=dict(
+            type='list', elements='str', required=False, default=[],
+            aliases=['source'],
+            description='Select which upstream blocklist source(s) this policy draws from'
+        ),
         download_urls=dict(
             type='list', elements='str', required=False, default=[],
             aliases=['download', 'lists'],
