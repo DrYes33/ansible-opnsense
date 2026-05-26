@@ -26,7 +26,7 @@ class General(GeneralModule):
         'aaaa_only_mode', 'register_dhcp_leases', 'dhcp_domain',
         'register_dhcp_static_mappings', 'register_ipv6_link_local',
         'register_system_records', 'txt_records', 'flush_dns_cache', 'local_zone_type',
-        'outgoing_interfaces', 'wpad',
+        'outgoing_interfaces', 'wpad', 'harden_below_nxdomain',
     ]
     FIELDS_ALL = FIELDS_CHANGE
     FIELDS_TRANSLATE = {
@@ -43,6 +43,7 @@ class General(GeneralModule):
         'local_zone_type': 'local_zone_type',
         'outgoing_interfaces': 'outgoing_interface',
         'wpad': 'enable_wpad',
+        'harden_below_nxdomain': 'belownxdomain',
     }
     FIELDS_BOOL_INVERT = ['register_ipv6_link_local', 'register_system_records']
     FIELDS_TYPING = {
@@ -50,6 +51,7 @@ class General(GeneralModule):
             'enabled', 'dnssec', 'dns64', 'aaaa_only_mode', 'register_dhcp_leases',
             'register_dhcp_static_mappings', 'register_ipv6_link_local',
             'register_system_records', 'txt_records', 'flush_dns_cache', 'wpad',
+            'harden_below_nxdomain',
         ],
         'list': [
             'interfaces', 'outgoing_interfaces',

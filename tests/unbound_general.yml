@@ -154,6 +154,7 @@
         outgoing_interfaces:
           - 'lan'
         wpad: true
+        harden_below_nxdomain: true
         enabled: true
         reload: false  # speed
       register: opn6
@@ -182,6 +183,7 @@
         outgoing_interfaces:
           - 'lan'
         wpad: true
+        harden_below_nxdomain: true
         enabled: true
         reload: false  # speed
       register: opn7
@@ -193,5 +195,6 @@
     - name: Cleanup
       oxlorg.opnsense.unbound_general:
         enabled: false
+        harden_below_nxdomain: false
         reload: false
       when: not ansible_check_mode
