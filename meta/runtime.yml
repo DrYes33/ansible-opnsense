@@ -152,6 +152,7 @@ action_groups:
     - oxlorg.opnsense.dhcp_reservation
     - oxlorg.opnsense.dhcp_controlagent
     - oxlorg.opnsense.dhcp_general
+    - oxlorg.opnsense.kea_ddns
     - oxlorg.opnsense.dhcp_subnet
   acme:
     - oxlorg.opnsense.acme_general
