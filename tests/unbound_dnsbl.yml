@@ -44,6 +44,8 @@
       oxlorg.opnsense.unbound_dnsbl:
         name: 'ANSIBLE_TEST_1'
         providers: 'atf'
+        sources:
+          - 'hgz'
         download_urls: ['https://example.com/dns.blocklist']
         domains_allow:
           - 'opnsense.org'
@@ -68,6 +70,9 @@
       oxlorg.opnsense.unbound_dnsbl:
         name: 'ANSIBLE_TEST_1'
         providers: 'atf'
+        sources:
+          - 'hgz'
+          - 'oisd'
         domains_allow:
           - 'opnsense.org'
           - 'oxl.at'
@@ -91,6 +96,9 @@
       oxlorg.opnsense.unbound_dnsbl:
         name: 'ANSIBLE_TEST_1'
         providers: 'atf'
+        sources:
+          - 'hgz'
+          - 'oisd'
         domains_allow:
           - 'opnsense.org'
           - 'oxl.at'
@@ -114,6 +122,9 @@
       oxlorg.opnsense.unbound_dnsbl:
         name: 'ANSIBLE_TEST_1'
         providers: 'atf'
+        sources:
+          - 'hgz'
+          - 'oisd'
         domains_allow:
           - 'opnsense.org'
           - 'oxl.at'
@@ -145,6 +156,7 @@
       oxlorg.opnsense.unbound_dnsbl:
         name: 'ANSIBLE_TEST_2'
         providers: 'atf'
+        source: 'hgz'
         download_urls: ['https://example.com/dns.blocklist']
         domains_block:
           - 'example.tor'
