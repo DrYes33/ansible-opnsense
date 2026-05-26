@@ -102,6 +102,10 @@ def run_module():
             description='Whether CNAME records for the WPAD host of all configured domains '
                         'will be automatically added as well as overrides for TXT records for domains'
         ),
+        harden_below_nxdomain=dict(
+            type='bool', required=False, default=False,
+            description='Harden below NXDOMAIN: treat NXDOMAIN as authoritative and stop resolving sub-labels'
+        ),
         **EN_ONLY_MOD_ARG,
         **OPN_MOD_ARGS,
         **RELOAD_MOD_ARG,
