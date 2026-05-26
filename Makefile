@@ -1,5 +1,18 @@
-make unit-test:
+PATH := $(CURDIR)/.venv/bin:$(PATH)
+
+.PHONY: build test unit-test functional-test lint
+
+build:
+	bash scripts/build.sh
+
+test:
 	bash scripts/unit_test.sh
 
-make lint:
+unit-test:
+	bash scripts/unit_test.sh
+
+functional-test:
+	bash scripts/test.sh
+
+lint:
 	bash scripts/lint.sh
