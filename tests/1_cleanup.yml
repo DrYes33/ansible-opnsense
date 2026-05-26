@@ -783,6 +783,14 @@
       oxlorg.opnsense.dhcp_general:
         enabled: false
 
+    - name: Cleanup DHCP Options
+      oxlorg.opnsense.kea_dhcp4_option:
+        code: '224'
+        encoding: 'string'
+        data: 'dummy'
+        description: 'ansible-test-option'
+        state: 'absent'
+
     - name: Cleanup DHCP Subnets
       oxlorg.opnsense.dhcp_subnet:
         subnet: "{{ item }}"

@@ -2,6 +2,12 @@
 
 extends: default
 
+ignore: |
+  .ansible/
+  .venv/
+  .venv-docs/
+  collections/
+
 rules:
   truthy:
     allowed-values: ['true', 'false', 'yes', 'no']
