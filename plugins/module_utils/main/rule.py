@@ -15,11 +15,12 @@ class Rule(BaseModule):
     CMDS = {
         'add': 'add_rule',
         'del': 'del_rule',
+        'detail': 'get_rule',
         'set': 'set_rule',
-        'search': 'get',
+        'search': 'search_rule',
         'toggle': 'toggle_rule',
     }
-    API_KEY_PATH = 'filter.rules.rule'
+    API_KEY_PATH = 'rule'
     API_MOD = 'firewall'
     API_CONT = 'filter'
     FIELDS_CHANGE = [
