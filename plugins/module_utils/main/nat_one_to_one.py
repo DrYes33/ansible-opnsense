@@ -17,7 +17,7 @@ class OneToOne(BaseModule):
         'search': 'search_rule',
         'toggle': 'toggle_rule',
     }
-    API_KEY_PATH = 'filter.onetoone.rule'
+    API_KEY_PATH = 'rule'
     API_MOD = 'firewall'
     API_CONT = 'one_to_one'
     FIELDS_CHANGE = [
