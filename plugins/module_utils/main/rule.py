@@ -8,6 +8,7 @@ from ansible_collections.oxlorg.opnsense.plugins.module_utils.base.api import Se
 from ansible_collections.oxlorg.opnsense.plugins.module_utils.helper.rule import \
     validate_values
 from ansible_collections.oxlorg.opnsense.plugins.module_utils.base.cls import BaseModule
+from ansible_collections.oxlorg.opnsense.plugins.module_utils.main.savepoint import SavePoint
 
 
 class Rule(BaseModule):
@@ -79,6 +80,7 @@ class Rule(BaseModule):
         'state_timeout': {'min': 1},
     }
     API_CMD_REL = 'apply'
+    USE_SAVEPOINT = True
 
     def __init__(
             self, module: AnsibleModule, result: dict, multi: dict = None,
@@ -87,6 +89,7 @@ class Rule(BaseModule):
         BaseModule.__init__(self=self, m=module, r=result, s=session, f=fail, multi=multi)
         self.rule = {}
         self.log_name = None
+        self._savepoint: SavePoint = None
 
     def _build_log_name(self) -> str:
         if self.p['description'] not in [None, '']:
@@ -123,6 +126,13 @@ class Rule(BaseModule):
             validate_values(module=self.m, cnf=self.p, error_func=self._error)
 
         self._base_check()
+
+    def reload(self) -> None:
+        if self._savepoint is not None:
+            self._savepoint.apply()
+            self._savepoint.cancel_rollback()
+        else:
+            self.b.reload()
 
     def _error(self, msg: str, verification: bool = True) -> None:
         if (verification and self.fail_verify) or (not verification and self.fail_process):

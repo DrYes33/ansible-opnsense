@@ -9,6 +9,7 @@ from ansible_collections.oxlorg.opnsense.plugins.module_utils.base.api import Se
 from ansible_collections.oxlorg.opnsense.plugins.module_utils.base.cls import BaseModule
 from ansible_collections.oxlorg.opnsense.plugins.module_utils.defaults.main import \
     OPN_MOD_ARGS, RELOAD_MOD_ARG_DEF_FALSE
+from ansible_collections.oxlorg.opnsense.plugins.module_utils.main.savepoint import SavePoint
 
 
 def build_multi_mod_args(
@@ -283,6 +284,13 @@ class MultiModule:
             self.cache = self.callbacks.get_existing(self.meta_entry)
             self._cache_original = self.cache.copy()
 
+        use_savepoint = getattr(self.o, 'USE_SAVEPOINT', False) and self.p['reload']
+
+        if use_savepoint:
+            sp = SavePoint(module=self.m, result=self.r, controller=self.o.API_CONT, api_module=self.o.API_MOD)
+            sp.revision = sp.create()
+            self.meta_entry._savepoint = sp
+
         if self._is_multi_purge():
             self._purge()
 
@@ -293,7 +301,7 @@ class MultiModule:
         else:
             self.m.fail_json('Got invalid Mass-Management arguments!')
 
-        if self.r['changed'] and self.p['reload']:
+        if (self.r['changed'] or use_savepoint) and self.p['reload']:
             self.meta_entry.reload()
 
         self.s.close()
