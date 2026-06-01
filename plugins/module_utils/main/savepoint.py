@@ -4,13 +4,13 @@ from ansible_collections.oxlorg.opnsense.plugins.module_utils.base.api import si
 
 
 class SavePoint:
-    def __init__(self, module: AnsibleModule, result: dict, controller: str = None):
+    def __init__(self, module: AnsibleModule, result: dict, controller: str = None, api_module: str = None):
         self.m = module
         self.r = result
         self.c = controller if controller is not None else self.m.params['controller']
-        self.revision = self.m.params['revision']
+        self.revision = self.m.params.get('revision', None)
         self.call_cnf = {
-            'module': self.m.params['api_module'],
+            'module': api_module if api_module is not None else self.m.params['api_module'],
             'controller': self.c,
         }
 
