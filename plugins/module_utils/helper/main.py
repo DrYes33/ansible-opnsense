@@ -333,7 +333,7 @@ def simplify_translate(
         # correct value types to match (for diff-checks)
         for t, fields in typing.items():
             for f in fields:
-                if f in ignore:
+                if f in ignore or f not in simple:
                     continue
 
                 if t == 'bool':
